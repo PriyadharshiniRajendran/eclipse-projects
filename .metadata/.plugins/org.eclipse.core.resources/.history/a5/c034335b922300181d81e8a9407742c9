@@ -1,0 +1,45 @@
+package assignment;
+
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class employeemain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		Employeeservice service = (Employeeservice)context.getBean("service");
+		Employee employee = (Employee) context.getBean("EmployeeObject");
+		
+
+		Scanner sc=new Scanner(System.in);
+		int n;
+		String empname;
+		double salary;
+		String empdes;
+		System.out.println("******** Employee Management System ********");
+		System.out.println("***Enter your choice***");
+		System.out.println("1)Add   2)Delete by Id  3)Display All  4)Update by id  5)Exit");
+		
+		n=sc.nextInt();
+		switch (n) {
+		case 1:
+			System.out.println("**** Performing Insert ****");
+			System.out.println("Enter id, name, salary, description");
+			employee.setEmpid(sc.nextInt());
+			employee.setEmpname(sc.next());
+			employee.setSalary(sc.nextDouble());
+		    employee.setEmpdes(sc.next());
+			service.add(employee);
+			break;
+
+		default:
+			break;
+		}
+		
+		
+	}
+	
+}

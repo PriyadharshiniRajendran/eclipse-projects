@@ -1,0 +1,18 @@
+package assignment;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+
+public class EmployeeDAO {
+	@Autowired
+	private JdbcTemplate template;
+	public void add(Employee e)
+	{
+	template.update("insert into employee values(?, ?, ?)",new Object[] {e.getEmpid(),e.getEmpname(),e.getsalary(),e.getEmpname()});
+	}
+	
+
+}
